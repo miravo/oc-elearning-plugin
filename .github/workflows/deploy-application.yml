@@ -1,0 +1,20 @@
+name: DEPLOY on PROD
+on:
+  push:
+    branches:
+    - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: rsync deployments
+      uses: burnett01/rsync-deployments@5.2
+      with:
+        switches: -avzr --delete
+        path: ./
+        remote_path: ${{ secrets.path }}
+        remote_host: ${{ secrets.host }}
+        remote_user: ${{ secrets.user }}
+        remote_port: ${{ secrets.port }}
+        remote_key: ${{ secrets.deploy_key}}
