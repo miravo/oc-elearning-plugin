@@ -13,8 +13,8 @@ jobs:
       with:
         switches: -avzr --delete
         path: ./
-        remote_path: ${{ secrets.path }}
-        remote_host: ${{ secrets.host }}
-        remote_user: ${{ secrets.user }}
-        remote_port: ${{ secrets.port }}
+        remote_path: ${{ vars.path }}
+        remote_host: ${{ vars.host }}
+        remote_user: ${{ vars.user }}
+        remote_port: ${{ vars.port }}
         remote_key: ${{ secrets.deploy_key}}
